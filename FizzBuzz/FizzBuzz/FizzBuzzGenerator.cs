@@ -2,18 +2,23 @@
 {
     public class FizzBuzzGenerator
     {
+        private List<Func<int, string>> numberToWordMappers;
+
+        public FizzBuzzGenerator(List<Func<int, string>> numberToWordMappers)
+        {
+            this.numberToWordMappers = numberToWordMappers;
+        }
+
         public IEnumerable<string> Generate(int n)
         {
             return Enumerable.Range(1, n)
                 .Select(x =>
                 {
-                    string fizzBuzzElement = $"{FizzOrEmpty(x)}{BuzzOrEmpty(x)}";
+                    string fizzBuzzElement = string.Join("",
+                        numberToWordMappers.Select(numberToWordMapper => numberToWordMapper(x)));
 
                     return fizzBuzzElement != string.Empty ? fizzBuzzElement : x.ToString();
                 });
         }
-
-        private string FizzOrEmpty(int x) => x % 3 == 0 ? "Fizz" : string.Empty;
-        private string BuzzOrEmpty(int x) => x % 5 == 0 ? "Buzz" : string.Empty;
     }
 }
