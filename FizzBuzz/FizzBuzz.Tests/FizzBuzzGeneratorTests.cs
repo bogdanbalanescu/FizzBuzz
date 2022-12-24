@@ -5,11 +5,7 @@ namespace FizzBuzz.Tests
         [Test]
         public void Generate_APositiveNumberIsProvided_ReturnsTheFirstNFizzBuzzSequence()
         {
-            FizzBuzzGenerator fizzBuzzGenerator = new FizzBuzzGenerator(new List<Func<int, string>>
-            {
-                x => x % 3 == 0 ? "Fizz" : string.Empty,
-                x => x % 5 == 0 ? "Buzz" : string.Empty
-            });
+            FizzBuzzGenerator fizzBuzzGenerator = FizzBuzzGeneratorFactory.CreateFizzBuzzGenerator();
 
             IEnumerable<string> fizzBuzzSequence = fizzBuzzGenerator.Generate(15);
 
@@ -22,12 +18,7 @@ namespace FizzBuzz.Tests
         [Test]
         public void Generate_APositiveNumberIsProvided_ReturnsTheFirstNEvenFizzBuzzSequence()
         {
-            FizzBuzzGenerator fizzBuzzGenerator = new FizzBuzzGenerator(new List<Func<int, string>>
-            {
-                x => x % 2 == 0 ? "Even" : string.Empty,
-                x => x % 3 == 0 ? "Fizz" : string.Empty,
-                x => x % 5 == 0 ? "Buzz" : string.Empty,
-            });
+            FizzBuzzGenerator fizzBuzzGenerator = FizzBuzzGeneratorFactory.CreateEvenFizzBuzzGenerator();
 
             IEnumerable<string> fizzBuzzSequence = fizzBuzzGenerator.Generate(30);
 
