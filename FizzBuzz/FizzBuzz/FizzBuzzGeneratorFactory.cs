@@ -16,5 +16,14 @@
                 x => x % 3 == 0 ? "Fizz" : string.Empty,
                 x => x % 5 == 0 ? "Buzz" : string.Empty,
             });
+
+        public static FizzBuzzGenerator CreateOddEvenFizzBuzzGenerator() =>
+            new FizzBuzzGenerator(new List<Func<int, string>>
+            {
+                x => x % 2 == 1 ? "Odd" : string.Empty,
+                x => x % 2 == 0 ? "Even" : string.Empty,
+                x => x % 3 == 0 ? "Fizz" : string.Empty,
+                x => x % 5 == 0 ? "Buzz" : string.Empty,
+            });
     }
 }

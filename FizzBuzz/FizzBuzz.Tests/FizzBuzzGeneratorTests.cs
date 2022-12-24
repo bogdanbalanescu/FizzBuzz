@@ -28,5 +28,19 @@ namespace FizzBuzz.Tests
                     "Even", "17", "EvenFizz", "19", "EvenBuzz", "Fizz", "Even", "23", "EvenFizz", "Buzz", "Even", "Fizz", "Even", "29", "EvenFizzBuzz" };
             Assert.That(fizzBuzzSequence, Is.EqualTo(expectedFizzBuzzSequence));
         }
+
+        [Test]
+        public void Generate_APositiveNumberIsProvided_ReturnsTheFirstNOddEvenFizzBuzzSequence()
+        {
+            FizzBuzzGenerator fizzBuzzGenerator = FizzBuzzGeneratorFactory.CreateOddEvenFizzBuzzGenerator();
+
+            IEnumerable<string> fizzBuzzSequence = fizzBuzzGenerator.Generate(30);
+
+            IEnumerable<string> expectedFizzBuzzSequence =
+                new string[] {
+                    "Odd", "Even", "OddFizz", "Even", "OddBuzz", "EvenFizz", "Odd", "Even", "OddFizz", "EvenBuzz", "Odd", "EvenFizz", "Odd", "Even", "OddFizzBuzz",
+                    "Even", "Odd", "EvenFizz", "Odd", "EvenBuzz", "OddFizz", "Even", "Odd", "EvenFizz", "OddBuzz", "Even", "OddFizz", "Even", "Odd", "EvenFizzBuzz" };
+            Assert.That(fizzBuzzSequence, Is.EqualTo(expectedFizzBuzzSequence));
+        }
     }
 }
